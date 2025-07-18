@@ -212,27 +212,27 @@ There are also Rules, Conditions and Transform!
 This is part of a template file that creates a simple Free Tier EC2 instance for later use with an attached SG allowing SSH and HTTP
 ```yaml
 Resources:
-  EC2Instance:
-    Type: AWS::EC2::Instance
-    Properties:
-      InstanceType: "t2.micro"
-      ImageId: !Ref LatestAmiId
-      IamInstanceProfile: !Ref SessionManagerInstanceProfile
-      SecurityGroups:
-        - !Ref InstanceSecurityGroup
-  InstanceSecurityGroup:
-    Type: 'AWS::EC2::SecurityGroup'
-    Properties:
-      GroupDescription: Enable SSH access via port 22 and 80
-      SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: '22'
-          ToPort: '22'
-          CidrIp: !Ref SSHandWebLocation
-        - IpProtocol: tcp
-          FromPort: '80'
-          ToPort: '80'
-          CidrIp: !Ref SSHandWebLocation
+EC2Instance:
+  Type: AWS::EC2::Instance
+  Properties:
+    InstanceType: "t2.micro"
+    ImageId: !Ref LatestAmiId
+    IamInstanceProfile: !Ref SessionManagerInstanceProfile
+    SecurityGroups:
+      - !Ref InstanceSecurityGroup
+InstanceSecurityGroup:
+  Type: 'AWS::EC2::SecurityGroup'
+  Properties:
+    GroupDescription: Enable SSH access via port 22 and 80
+    SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: !Ref SSHandWebLocation
+      - IpProtocol: tcp
+        FromPort: '80'
+        ToPort: '80'
+        CidrIp: !Ref SSHandWebLocation
 ```
 Instances have types like AWS::EC2::Instance
 Even the UI is controllable via the templates
@@ -313,21 +313,21 @@ Composed by one or more statements which grant or deny permissions to AWS Servic
 The user, group or role with this policies will have full access to every s3 bucket except for cat-pics!
 ```json
 {
-   "Version": "2012-10-17",
-   "Statement": [
-    {
-       "Sid": "FullAccess",
-       "Effect": "Allow",
-       "Action": "s3:*",
-       "Resource": ["*"]
-    },
-    {
-       "Sid": "DenyCatBucket",
-       "Effect": "Deny",
-       "Action": "s3:*",
-       "Resource": ["arn:aws:s3:::cat-pics", "arn:aws:s3:::cat-pics/*"]
-    },
-   ]
+  "Version": "2012-10-17",
+  "Statement": [
+  {
+      "Sid": "FullAccess",
+      "Effect": "Allow",
+      "Action": "s3:*",
+      "Resource": ["*"]
+  },
+  {
+      "Sid": "DenyCatBucket",
+      "Effect": "Deny",
+      "Action": "s3:*",
+      "Resource": ["arn:aws:s3:::cat-pics", "arn:aws:s3:::cat-pics/*"]
+  },
+  ]
 }
 ```
 The 1st statement called "FullAccess" allows every action for the S3 service for every S3 bucket, but the 2nd denies those two specific ARNs!
@@ -401,7 +401,7 @@ So Partitions(e.g. aws and aws-cn) contains Regions(us-east-1 and ap-northeast-1
 ```
 aws <service> <operation> [parameters] 'options'
 ```
-## Optionsc
+## Options
 --profile(Use different configured credentials)
 --region(Specify AWS region)
 --output(Change output format, like text, json and table)
@@ -410,6 +410,10 @@ Look at that JSON query!
 ```bash
 aws cloudfront list-distributions --query 'DistributionList.Items[].DomainName'
 ```
-
-AWS simulations
-AWS labs 
+# IAM Groups
+Can have policies attached to then and contain IAM Users
+There is no "all user" built-in group if a question comes up
+## Example
+Sally might be in the DevOps and Developer IAM Groups!
+# IAM Roles
+You can login as a role to get special permissions for limited time

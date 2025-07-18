@@ -13,4 +13,4 @@ Before the exam:
 6. Run ther tests suite
 
 > [!WARNING]
-> This are meant to be read raw!
+> These are meant to be read raw!

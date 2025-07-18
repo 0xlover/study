@@ -1,0 +1,9 @@
+# Resources
+Review [Effective Go](https://go.dev/doc/effective_go)
+
+# Learn Go with Tests
+## TDD(Test Driven Development)
+1. ...
+2. ...
+3. ...
+## Testing Handlers

@@ -14,3 +14,9 @@ Before the exam:
 
 > [!WARNING]
 > These are meant to be read raw!
+
+## Resources
+* Golang: [Effective Go](https://go.dev/doc/effective_go) and [Learn Go with tests](https://quii.gitbook.io/learn-go-with-tests/)
+* AWS, Networking and Kubernetes: [Cantrill](https://learn.cantrill.io/)
+* Docker: [DevOps Directive Docker](https://www.youtube.com/watch?v=RqTEHSBrYFw)
+* Kubernetes: []()

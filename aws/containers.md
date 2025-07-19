@@ -1,4 +1,5 @@
 # Kubernetes(K8)
+TO BE SORTED
 Orchestrate Docker containers in clusters for automatic deployment and scaling
 ## Components
 The Control Pane orchestrates containered applications(like Docker images running on Kubernetes Nodes) 
